@@ -1,0 +1,143 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Global styles */
+body {
+    background-color: #121212;
+    /* Dark background */
+    color: #e0e0e0;
+    /* Light gray text for readability */
+    padding: 0 20px;
+}
+
+/* Header and navigation */
+header {
+    background-color: #1f1f1f;
+    /* Dark header */
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.nav-link {
+    color: #e0e0e0;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff9800;
+    /* Orange on hover */
+}
+
+.iconsHeader {
+    font-size: 35px;
+}
+
+.icon {
+    cursor: pointer;
+    margin: 0 15px;
+    color: #ff9800;
+    /* Orange icon */
+}
+
+/* Sign-up Section */
+.signup-section {
+    padding: 80px 0;
+}
+
+.card {
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    /* Dark background for the card */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    /* Light shadow for contrast */
+}
+
+.card-body {
+    padding: 40px;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    background-color: #2a2a2a;
+    /* Darker background for inputs */
+    color: #e0e0e0;
+    /* Light text for visibility */
+    border: 1px solid #555;
+    /* Subtle border for inputs */
+}
+
+.form-control:focus {
+    border-color: #ff9800;
+    /* Orange border on focus */
+    box-shadow: 0px 0px 5px rgba(255, 152, 0, 0.5);
+    /* Soft glow effect */
+}
+
+/* Buttons */
+#contactUsButton {
+    background-color: #ff9800;
+    /* Orange button */
+    border-color: #ff9800;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 100%;
+    color: white;
+    /* Dark text on orange button for contrast */
+}
+
+#contactUsButton {
+    background-color: #e68a00;
+    /* Darker orange on hover */
+    border-color: #e68a00;
+}
+
+/* Status and Links */
+#signupStatus {
+    text-align: center;
+    margin-top: 20px;
+    color: #e0e0e0;
+    /* Light text for status */
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.text-muted:hover {
+    color: #ff9800 !important;
+    /* Highlight muted text on hover */
+}
+
+a {
+    text-decoration: none;
+    color: #ff9800;
+    /* Link color matching button */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+    .card-body {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+    }
+
+    .form-control {
+        padding: 10px;
+        /* Adjust form input size on smaller screens */
+    }
+}

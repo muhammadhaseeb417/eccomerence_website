@@ -1,0 +1,119 @@
+/* login-page.css */
+
+/* Global styles */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: "Montserrat";
+    padding: 0 20px;
+}
+
+/* Header and navigation */
+header {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.nav-link {
+    color: #e0e0e0;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff9800;
+}
+
+.iconsHeader {
+    font-size: 35px;
+}
+
+.icon {
+    cursor: pointer;
+    margin: 0 15px;
+    color: #ff9800;
+}
+
+/* Login Section */
+.login-section {
+    padding: 80px 0;
+}
+
+.login_heading {
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 40px;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.form-control:focus {
+    border-color: #ff9800;
+    box-shadow: 0px 0px 5px rgba(255, 152, 0, 0.5);
+}
+
+.btn-primary {
+    background-color: #ff9800;
+    border-color: #ff9800;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #e68a00;
+    border-color: #e68a00;
+}
+
+/* Status message */
+#loginStatus {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Links */
+.text-muted {
+    color: #6c757d !important;
+}
+
+.text-muted:hover {
+    color: #ff9800 !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+    .card-body {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+    }
+}

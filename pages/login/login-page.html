@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- jQuery (important to load before Bootstrap JS and custom scripts) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- RemixIcon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/my_website/pages/login/login-page.css">
+</head>
+
+<body>
+
+    <!-- ###################################  header #################################### -->
+    <header>
+        <nav class="navbar navbar-expand-lg" id="myNavBar">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">
+                    <img src="/my_website/assets/img/image-removebg-preview.png" alt="logo" width="140px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a href="/my_website/pages/home-page/home.php" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Men</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Women</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/my_website/pages/Contact Us/contact-us-page.html" class="nav-link">Contact Us</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center" id="icons">
+                        <a href="#" class="nav-link iconsHeader">
+                            <i class="ri-shopping-cart-line navicon mx-2"></i>
+                        </a>
+                        <a href="/my_website/pages/login/login-page.html" class="nav-link iconsHeader">
+                            <i class="ri-account-circle-line navicon mx-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="login-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-7">
+                    <div class="card shadow-lg border-0 rounded-lg">
+                        <div class="card-body p-5">
+                            <h2 class="text-center mb-4 login_heading">Login</h2>
+                            <form id="loginForm" method="POST">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label" style="color: white;">Email address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label" style="color: white;">Password</label>
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Enter your password" required>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <a href="#" class="text-muted">Forgot Password?</a>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Login</button>
+                                </div>
+                                <p id="loginStatus" class="mt-3"></p>
+                                <div class="text-center mt-3">
+                                    <p class="mb-0" style="color: white;">Don't have an account? <a
+                                            href="/my_website/pages/signup/signup-page.html"
+                                            style="color: #ff9800;">Sign up here</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Inline JavaScript -->
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                console.log("Login attempt...");
+                const response = await fetch("/my_website/pages/login/login.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
+                });
+
+                const result = await response.json();
+
+                const loginStatus = document.getElementById("loginStatus");
+                if (result.status === "success") {
+                    loginStatus.innerHTML = `<span style="color: green;">${result.message}</span>`;
+                    window.location.href = "/my_website/pages/home-page/home.php"; // Redirect to homepage
+                } else {
+                    loginStatus.innerHTML = `<span style="color: red;">${result.message}</span>`;
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("loginStatus").innerHTML =
+                    '<span style="color: red;">An error occurred. Please try again later.</span>';
+            }
+        });
+    </script>
+</body>
+
+</html>
