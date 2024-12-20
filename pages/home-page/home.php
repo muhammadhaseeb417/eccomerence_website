@@ -43,7 +43,13 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <style>
+        .selected_catagory_items {
+    display: flex;
+    gap: 20px;
+}
 
+    </style>
 
 
 </head>
@@ -687,6 +693,192 @@ $(document).ready(function () {
     });
 
 });
+</script>
+
+<script>
+    class ProductCard extends HTMLElement {
+    constructor() {
+        super();
+
+        const shadow = this.attachShadow({ mode: 'open' });
+
+        // Attributes for the product card
+        const productName = this.getAttribute('product-name') || 'Default Product Name';
+        const productPrice = this.getAttribute('product-price') || '$0';
+        const productImg = this.getAttribute('product-img') || '/assets/img/default.png';
+        const productRating = this.getAttribute('product-rating') || '0';
+
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            .product-card {
+                background-color: #121212;
+                color: #ff9800;
+                padding: 20px;
+                border-radius: 15px;
+                border: 2px solid #ff9800;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                width: 250px;
+                height: 400px;
+                transition: transform 0.3s, box-shadow 0.3s;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                position: relative;
+            }
+
+            .product-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 15px #ff9800;
+            }
+
+            .image-container {
+                width: 100%;
+                height: 200px; /* Fixed height for image container */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 15px;
+                overflow: hidden;
+                border-radius: 10px;
+                padding: 20px;
+            }
+
+            .product-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* This ensures image covers the area without distortion */
+                border-radius: 10px;
+                transition: transform 0.3s;
+            }
+
+            .product-card:hover .product-img {
+                transform: scale(1.05);
+            }
+
+            .product-info {
+                width: 100%;
+                height: calc(100% - 215px); /* Subtract image container height + margin */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .product-name {
+                font-size: 18px;
+                font-weight: bold;
+                color: white;
+                text-align: center;
+                margin-bottom: 10px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                height: 44px; /* Fixed height for 2 lines */
+            }
+
+            .stars {
+                display: flex;
+                gap: 5px;
+                color: #ff9800;
+                margin-bottom: 10px;
+                height: 20px; /* Fixed height */
+            }
+
+            .product-price {
+                font-size: 24px;
+                font-weight: bold;
+                color: white;
+                margin-bottom: 15px;
+                height: 30px; /* Fixed height */
+            }
+
+            .add-to-cart {
+                background-color: #ff9800;
+                color: #121212;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-weight: bold;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                border: none;
+                width: 100%;
+                height: 40px; /* Fixed height */
+            }
+
+            .add-to-cart:hover {
+                background-color: #e68a00;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .product-card {
+                    width: 200px;
+                    height: 350px; /* Adjusted height for mobile */
+                }
+                
+                .image-container {
+                    height: 150px; /* Smaller image container for mobile */
+                }
+
+                .product-info {
+                    height: calc(100% - 165px); /* Adjusted for mobile */
+                }
+
+                .product-name {
+                    font-size: 16px;
+                    height: 38px; /* Adjusted for smaller font */
+                }
+
+                .product-price {
+                    font-size: 20px;
+                }
+
+                .add-to-cart {
+                    font-size: 14px;
+                    height: 35px;
+                }
+            }
+        </style>
+
+        <div class="product-card">
+            <div class="image-container">
+                <img src="${productImg}" alt="${productName}" class="product-img">
+            </div>
+            <div class="product-info">
+                <p class="product-name">${productName}</p>
+                <div class="stars">${this.createStarsHTML(productRating)}</div>
+                <p class="product-price">${productPrice}</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        `;
+
+        shadow.appendChild(wrapper);
+    }
+
+    createStarsHTML(rating) {
+        const roundedRating = Math.min(Math.max(Math.floor(Number(rating)), 0), 5);
+        let starsHTML = '';
+        for (let i = 0; i < 5; i++) {
+            starsHTML += i < roundedRating ? '⭐' : '☆';
+        }
+        return starsHTML;
+    }
+}
+
+customElements.define('product-card', ProductCard);
+
 </script>
 
 

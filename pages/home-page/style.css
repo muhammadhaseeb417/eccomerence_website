@@ -191,10 +191,11 @@ h3 {
     }
 }
 
+
 .selected_catagory_items {
     display: flex;
+    gap: 20px;
 }
-
 
 .catagory_and_aboutus {
     flex: 3;

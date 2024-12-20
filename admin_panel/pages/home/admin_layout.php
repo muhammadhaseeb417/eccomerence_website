@@ -21,6 +21,9 @@
         <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'add_new_product.php' ? 'active' : ''; ?>">
             <a href="http://localhost/my_website/admin_panel/pages/add_new_product/add_new_product.php">Add New Product</a>
         </li>
+        <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'add_catagory.php' ? 'active' : ''; ?>">
+            <a href="http://localhost/my_website/admin_panel/pages/add_catagory/add_catagory.php">Add Add Catagory</a>
+        </li>
         <li class="<?php echo basename($_SERVER['PHP_SELF']) == 'orders.php' ? 'active' : ''; ?>">
             <a href="orders.php">Orders</a>
         </li>
