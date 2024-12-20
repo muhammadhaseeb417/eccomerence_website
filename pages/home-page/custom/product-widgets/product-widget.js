@@ -21,20 +21,21 @@ class ProductCard extends HTMLElement {
             }
 
             .product-card {
-                background-color: #121212;
-                color: #ff9800;
-                padding: 20px;
-                border-radius: 15px;
-                border: 2px solid #ff9800;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-                max-width: 250px;
-                transition: transform 0.3s, box-shadow 0.3s;
-                margin: 20px;
-                cursor: pointer;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+    background-color: #121212;
+    color: #ff9800;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #ff9800;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 250px; /* Set a fixed width for consistency */
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0; /* Remove margin */
+}
+
 
             .product-card:hover {
                 transform: translateY(-10px);

@@ -236,19 +236,12 @@ $conn->close();
     <center>
         <h2 class="headline_sale">Sale upto 40% off on these Products</h2>
     </center>
-    <!-- ###################################  Main Products #################################### -->
 
-
-    <div class="products-wrapper">
-    <section class="featured-products">
+    <div class="featured-products">
         <h3>Featured Products</h3>
-        <div id="product-container" class="product-card-container">
-            <div class="products_wrapper" id="products-wrapper">
-                <!-- Product cards will be dynamically loaded here -->
-            </div>
-        </div>
-    </section>
-        <!-- ###################################  Mian Products #################################### -->
+        <div class="products_wrapper" id="products-wrapper"></div>        
+    </div>
+        
 
         <hr class="white-line">
 

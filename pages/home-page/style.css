@@ -66,12 +66,36 @@ header {
 
 .featured-products {
     background-color: #1f1f1f;
-    /* background-color: #3e3e3e; */
     margin-bottom: 40px;
     border-radius: 8px;
     padding: 20px;
-    /* justify-content: start; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Ensures cards wrap within the parent */
+    gap: 20px;
+    /* Adds spacing between cards */
+    overflow: hidden;
+    /* Prevents extra space */
 }
+
+
+#products-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Center-align the cards */
+    gap: 20px;
+    /* Space between cards */
+    margin: 0 auto;
+    /* Center the container horizontally */
+    padding: 0;
+    /* Remove padding */
+    box-sizing: border-box;
+    /* Include padding and borders in total width */
+    width: 100%;
+}
+
 
 h3 {
     color: #ccc;
@@ -81,12 +105,7 @@ h3 {
     font-size: 40px;
 }
 
-.product-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+
 
 
 .white-line {
