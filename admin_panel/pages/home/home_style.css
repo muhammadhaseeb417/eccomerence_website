@@ -37,6 +37,8 @@ body {
 
 .sidebar ul li {
     margin: 15px 0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 .sidebar ul li a {
@@ -46,17 +48,36 @@ body {
     display: block;
     padding: 10px;
     border-radius: 4px;
-    transition: background 0.3s;
+    transition: all 0.3s;
 }
 
-.sidebar ul li a:hover {
+/* Active state styling */
+.sidebar ul li.active {
+    background-color: #004494;
+    /* Darker blue */
+}
+
+.sidebar ul li.active a {
+    color: #ffffff;
+    font-weight: 600;
+    background-color: #004494;
+    /* Darker blue */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover state for non-active items */
+.sidebar ul li:not(.active):hover {
     background-color: #0056b3;
+}
+
+.sidebar ul li:not(.active):hover a {
+    padding-left: 15px;
+    /* Slight indent on hover */
 }
 
 .container {
     flex: 1;
     margin-left: 250px;
-    /* Match sidebar width */
     padding: 20px;
     background: #fff;
     border-radius: 8px;
