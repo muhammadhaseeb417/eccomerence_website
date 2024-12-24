@@ -4,8 +4,10 @@ $username = "root";
 $password = "";
 $dbname = "My_Ecom_Website";
 
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -23,7 +25,8 @@ $image_path = "/my_website/assets/img/" . $unique_name;
 
 if (move_uploaded_file($_FILES["product_img"]["tmp_name"], $target_file)) {
     // File uploaded successfully; insert into the database
-    $sql = "INSERT INTO products (product_name, product_price, product_img, product_rating) VALUES ('$product_name', '$product_price', '$image_path', '$product_rating')";
+    $sql = "INSERT INTO products (product_name, product_price, product_img, product_rating, created_at) 
+            VALUES ('$product_name', '$product_price', '$image_path', '$product_rating', NOW())";
 
     if ($conn->query($sql) === TRUE) {
         echo "Product added successfully";

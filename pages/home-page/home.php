@@ -336,34 +336,10 @@ $conn->close();
 
             <!-- ################################################### -->
             <div class="sidebar_latest_products">
-                <h2 style="margin-top: 50px;margin-bottom: 20px;" class="headline_catagory">Latest
-                    Release</h2>
-
-                <!-- #######################   Latest Product, card ################################################### -->
-                <div class="all_latest_product_list">
-
-                    <!-- ###############################################   Latest Product's' ################################################### -->
-
-                    <product-card-latest product-name="Leather Jacket" product-img="/my_website/assets/img/clothing-2.png"
-                        product-rating="4.3" product-price="125">
-                    </product-card-latest>
-
-                    <product-card-latest product-name="Leather Jacket" product-img="/my_website/assets/img/clothing-2.png"
-                        product-rating="4.3" product-price="125">
-                    </product-card-latest>
-
-                    <product-card-latest product-name="Leather Jacket" product-img="/my_website/assets/img/clothing-2.png"
-                        product-rating="4.3" product-price="125">
-                    </product-card-latest>
-
-                    <product-card-latest product-name="Leather Jacket" product-img="/my_website/assets/img/clothing-2.png"
-                        product-rating="4.3" product-price="125">
-                    </product-card-latest>
-
-
-                    <!-- #################   Latest Product's' ############################# -->
+                <h2 style="margin-top: 50px; margin-bottom: 20px;" class="headline_catagory">Latest Release</h2>
+                <div class="all_latest_product_list" id="latest-products-list">
+                    <!-- Latest products will be dynamically added here -->
                 </div>
-                <!-- ##############   Latest Product, card ################################################### -->
             </div>
 
         </div>
@@ -658,6 +634,30 @@ $(document).ready(function () {
     }
 });
 
+</script>
+
+<script>
+// Fetch the latest products from the server
+fetch('http://localhost/my_website/pages/home-page/fetch_latest_products.php')
+    .then(response => response.json())
+    .then(products => {
+        const latestProductsList = document.getElementById('latest-products-list');
+        latestProductsList.innerHTML = ''; // Clear any existing content
+
+        // Loop through the products and add them to the list
+        products.forEach(product => {
+            const productCard = `
+                <product-card-latest 
+                    product-name="${product.product_name}" 
+                    product-img="${product.product_img}" 
+                    product-rating="${product.product_rating}" 
+                    product-price="${product.product_price}">
+                </product-card-latest>
+            `;
+            latestProductsList.innerHTML += productCard;
+        });
+    })
+    .catch(error => console.error('Error fetching latest products:', error));
 </script>
 
 <script>
